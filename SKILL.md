@@ -11,17 +11,17 @@ This is the `musubi-clips` skill with one more step at the end: the finished cli
 
 This skill needs the `musubi-clips` skill, usually at `~/.claude/skills/musubi-clips` (on Windows `%USERPROFILE%\.claude\skills\musubi-clips`). If it is missing, ask the user to install it with `npx skills add Musubiclip/clips`.
 
-Read `musubi-clips/SKILL.md` and follow it exactly, steps 1 to 6 (prepare, pick moments, romanise, check subtitles, render, look at the frames). Use that skill's directory as `<skill dir>` in its commands. Keep the `title` and `workdir` that `prepare` printed.
+Read `musubi-clips/SKILL.md` and follow it exactly, steps 1 to 7 (prepare, pick moments, start the video download, translate the captions into English, check subtitles, render, look at the contact sheets). Use that skill's directory as `<skill dir>` in its commands. Keep the `title` and `workdir` that `prepare` printed.
 
 **Render with the v2 design and the musubiclip.com watermark by default**, since these clips leave Musubi:
 
 ```bash
-uv run <skill dir>/scripts/clipper.py render <workdir> -n <clips wanted> --design v2 --watermark on [--keep-height 0.86]
+uv run <skill dir>/scripts/clipper.py render <workdir> -n <clips wanted> --design v2 --watermark on [--keep-height 0.86] [--end-screen [LOGO]]
 ```
 
-Drop the watermark (`--watermark off`) or use `--design v1` only when the user asks.
+Drop the watermark (`--watermark off`) or use `--design v1` only when the user asks. Add `--end-screen` (see musubi-clips step 6) when the user wants the creator's or brand's logo at the end.
 
-Do not upload until the frames have been checked in step 6. On Windows, run the commands in PowerShell exactly as written; `uv`, `rclone` and the clipper behave the same.
+Do not upload until the contact sheets have been checked in step 7. On Windows, run the commands in PowerShell exactly as written; `uv`, `rclone` and the clipper behave the same.
 
 ## 2. Upload, share and check
 
@@ -46,7 +46,7 @@ When it fails:
 
 ## 3. Report
 
-Do everything in `musubi-clips` step 7 (open the review page, list each clip) and give the reminders below. Then **end the reply with exactly this block**, filled from the script's JSON, so it can be copied as is:
+Do everything in `musubi-clips` step 8 (open the review page, list each clip) and give the reminders below. Then **end the reply with exactly this block**, filled from the script's JSON, so it can be copied as is:
 
 ```
 Channel: <channel>
